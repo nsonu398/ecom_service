@@ -292,20 +292,23 @@ class CategoryProductIntegrationTest {
         CategoryDto electronics = categoryService.createCategory(CategoryTestDataBuilder.createCategoryDto());
         CategoryDto clothing = categoryService.createCategory(CategoryTestDataBuilder.createClothingCategoryDto());
 
-        ProductDto featuredElectronics = ProductTestDataBuilder.createFeaturedProductDto();
+        // Create featured electronics product
+        ProductDto featuredElectronics = ProductTestDataBuilder.createProductDto();
         featuredElectronics.setCategoryId(electronics.getId());
         featuredElectronics.setSku("FEATURED_ELECTRONICS");
-        featuredElectronics.setIsFeatured(true); // Explicitly set featured
+        featuredElectronics.setIsFeatured(true);
         productService.createProduct(featuredElectronics);
 
-        ProductDto featuredClothing = ProductTestDataBuilder.createFeaturedProductDto();
+        // Create featured clothing product
+        ProductDto featuredClothing = ProductTestDataBuilder.createProductDto();
         featuredClothing.setCategoryId(clothing.getId());
         featuredClothing.setSku("FEATURED_CLOTHING");
         featuredClothing.setName("Featured T-Shirt");
         featuredClothing.setBrand("Nike");
-        featuredClothing.setIsFeatured(true); // Explicitly set featured
+        featuredClothing.setIsFeatured(true);
         productService.createProduct(featuredClothing);
 
+        // Create regular (non-featured) product
         ProductDto regularProduct = ProductTestDataBuilder.createProductDto();
         regularProduct.setCategoryId(electronics.getId());
         regularProduct.setSku("REGULAR_PRODUCT");
@@ -316,7 +319,7 @@ class CategoryProductIntegrationTest {
         List<ProductDto> featuredProducts = productService.getFeaturedProducts();
         assertThat(featuredProducts).hasSize(2);
         assertThat(featuredProducts).allMatch(ProductDto::getIsFeatured);
-        assertThat(featuredProducts).extracting("name").contains("MacBook Air M2", "Featured T-Shirt");
+        assertThat(featuredProducts).extracting("sku").contains("FEATURED_ELECTRONICS", "FEATURED_CLOTHING");
     }
 
 

@@ -11,6 +11,7 @@ public class ProductTestDataBuilder {
 
     public static ProductDto createProductDto() {
         ProductDto dto = new ProductDto();
+        dto.setId(1L); // Set ID for test
         dto.setName("iPhone 15 Pro");
         dto.setDescription("Latest iPhone with advanced features");
         dto.setPrice(new BigDecimal("999.99"));
@@ -29,16 +30,18 @@ public class ProductTestDataBuilder {
 
     public static ProductDto createFeaturedProductDto() {
         ProductDto dto = createProductDto();
+        dto.setId(2L); // Different ID
         dto.setName("MacBook Air M2");
         dto.setSku("MACBOOKAIRM2001");
         dto.setPrice(new BigDecimal("1299.99"));
-        dto.setIsFeatured(true); // Make sure this is set to true
+        dto.setIsFeatured(true);
         dto.setSize("13 inch");
         return dto;
     }
 
     public static ProductDto createOutOfStockProductDto() {
         ProductDto dto = createProductDto();
+        dto.setId(3L); // Different ID
         dto.setName("iPad Pro");
         dto.setSku("IPADPRO001");
         dto.setStockQuantity(0);
@@ -69,7 +72,7 @@ public class ProductTestDataBuilder {
 
     public static Product createProductEntity() {
         Product product = new Product();
-        // Don't set ID - let Hibernate generate it
+        product.setId(1L); // Set ID for test
         product.setName("iPhone 15 Pro");
         product.setDescription("Latest iPhone with advanced features");
         product.setPrice(new BigDecimal("999.99"));
@@ -94,6 +97,7 @@ public class ProductTestDataBuilder {
 
     public static ProductDto createSamsungProductDto() {
         ProductDto dto = new ProductDto();
+        dto.setId(4L); // Different ID
         dto.setName("Samsung Galaxy S24");
         dto.setDescription("Android smartphone with AI features");
         dto.setPrice(new BigDecimal("899.99"));

@@ -120,7 +120,7 @@ class ProductControllerTest {
     void shouldReturnErrorForNonExistentProduct() throws Exception {
         // When & Then
         mockMvc.perform(get("/api/products/{id}", 999L))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isNotFound()); // Changed from isInternalServerError
     }
 
     @Test
@@ -426,7 +426,7 @@ class ProductControllerTest {
         mockMvc.perform(post("/api/products")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isConflict()); // Changed from isInternalServerError
     }
 
     @Test

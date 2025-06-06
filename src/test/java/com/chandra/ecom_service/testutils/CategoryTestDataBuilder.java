@@ -9,6 +9,7 @@ public class CategoryTestDataBuilder {
 
     public static CategoryDto createCategoryDto() {
         CategoryDto dto = new CategoryDto();
+        dto.setId(1L); // Set ID for test
         dto.setName("Electronics");
         dto.setDescription("Electronic devices and accessories");
         dto.setParentCategoryId(null);
@@ -18,6 +19,7 @@ public class CategoryTestDataBuilder {
 
     public static CategoryDto createSubCategoryDto(Long parentId) {
         CategoryDto dto = new CategoryDto();
+        dto.setId(2L); // Set ID for test
         dto.setName("Smartphones");
         dto.setDescription("Mobile phones and accessories");
         dto.setParentCategoryId(parentId);
@@ -43,7 +45,7 @@ public class CategoryTestDataBuilder {
 
     public static Category createCategoryEntity() {
         Category category = new Category();
-        // Don't set ID - let Hibernate generate it
+        category.setId(1L); // Set ID for test
         category.setName("Electronics");
         category.setDescription("Electronic devices and accessories");
         category.setParentCategoryId(null);
@@ -53,7 +55,7 @@ public class CategoryTestDataBuilder {
 
     public static Category createSubCategoryEntity(Long parentId) {
         Category category = new Category();
-        // Don't set ID - let Hibernate generate it
+        category.setId(2L); // Set ID for test
         category.setName("Smartphones");
         category.setDescription("Mobile phones and accessories");
         category.setParentCategoryId(parentId);
@@ -63,6 +65,7 @@ public class CategoryTestDataBuilder {
 
     public static CategoryDto createClothingCategoryDto() {
         CategoryDto dto = new CategoryDto();
+        dto.setId(3L); // Set ID for test
         dto.setName("Clothing");
         dto.setDescription("Fashion and apparel");
         dto.setParentCategoryId(null);

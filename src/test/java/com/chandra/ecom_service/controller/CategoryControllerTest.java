@@ -113,7 +113,7 @@ class CategoryControllerTest {
     void shouldReturnNotFoundForNonExistentCategory() throws Exception {
         // When & Then
         mockMvc.perform(get("/api/categories/{id}", 999L))
-                .andExpect(status().isInternalServerError()); // Our service throws RuntimeException
+                .andExpect(status().isNotFound()); // Changed from isInternalServerError
     }
 
     @Test
@@ -261,6 +261,6 @@ class CategoryControllerTest {
         mockMvc.perform(post("/api/categories")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isInternalServerError()); // Our service throws RuntimeException
+                .andExpect(status().isConflict()); // Changed from isInternalServerError
     }
 }
