@@ -2,12 +2,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ecommerce_db
     username: postgres
-    password: your_password_here
+    password: password123  # Use the password you set above
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create-drop  # This will recreate tables on each restart (good for development)
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
